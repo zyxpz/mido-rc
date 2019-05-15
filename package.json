@@ -1,0 +1,30 @@
+{
+  "name": "mido-react-rc",
+  "version": "1.0.0",
+  "description": "react组件库",
+  "author": "Midnight Blues",
+  "bugs": {},
+  "main": "lib/main.js",
+  "license": "ISC",
+  "scripts": {
+    "": "",
+    "dev": "mido dev -p 9001",
+    "build": "mido build",
+    "lib": "rm -rf ./lib && npm run tslib && babel src --out-dir lib --copy-files --ignore **.test.js,**.md,examples/**",
+    "lint": "esw ./config/*.* ./src/**/*.js",
+    "lint:fix": "npm run lint -- --fix",
+    "lint:watch": "npm run lint -- --fix --watch",
+    "lint:style": "stylelint --fix --syntax less src/**/*.less"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-config-mido": "^1.0.0",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-watch": "^5.1.2",
+    "fs-extra": "^8.0.1",
+    "mido-construct": "^1.2.0",
+    "stylelint": "^10.0.1",
+    "stylelint-config-standard": "^18.3.0"
+  }
+}
