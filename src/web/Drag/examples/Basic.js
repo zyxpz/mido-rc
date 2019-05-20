@@ -1,6 +1,6 @@
 import { React, ReactDom } from 'midoReact';
 
-const Example = () => <div>123</div>;
+const Example = () => <div>Example</div>;
 
 ReactDom.render(
 	<Example />,

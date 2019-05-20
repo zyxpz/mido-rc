@@ -4,6 +4,10 @@ const path = require('path');
 
 const { setHtml, setIndex, webpackEntry } = require('../temp/app');
 
+const tpl = require('art-template');
+
+const indexHtml = require('../temp/index.art');
+
 let cpName = ''; // component Name
 let etName = ''; // webpack entry name
 let webpackEntryArr = []; // webpackEntryArr
@@ -73,8 +77,15 @@ const getEntryFile = (dir) => {
 		}
     
 		if (file === 'index') {
-			console.log(file, cpNameArr);
-      
+			const cpList = [];
+
+			cpNameArr.forEach(item => {
+				cpList.push({ name: item, 
+					file: `/${item}.html` });
+			});
+
+			const buildIndexHtml = indexHtml({ cpList });
+			fs.outputFileSync(`${process.cwd()}/source/index.html`, buildIndexHtml);
 		}
 	});
 };

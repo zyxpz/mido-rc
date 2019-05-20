@@ -34,6 +34,7 @@ exports.webpackEntry = (arr) => {
     `;
 	});
 	return `exports.entry = {
+    index: '${process.cwd()}/source/index.html',
     ${d}
   }`;
 };
