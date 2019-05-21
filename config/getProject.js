@@ -76,17 +76,15 @@ const getEntryFile = (dir) => {
 			}
 		}
     
-		if (file === 'index') {
-			const cpList = [];
+		const cpList = [];
 
-			cpNameArr.forEach(item => {
-				cpList.push({ name: item, 
-					file: `/${item}.html` });
-			});
+		cpNameArr.forEach(item => {
+			cpList.push({ name: item, 
+				file: `/${item}.html` });
+		});
 
-			const buildIndexHtml = indexHtml({ cpList });
-			fs.outputFileSync(`${process.cwd()}/source/index.html`, buildIndexHtml);
-		}
+		const buildIndexHtml = indexHtml({ cpList });
+		fs.outputFileSync(`${process.cwd()}/source/index.html`, buildIndexHtml);
 	});
 };
 
