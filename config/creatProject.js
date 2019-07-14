@@ -3,10 +3,14 @@ const glob = require('glob');
 const path = require('path');
 const fs = require('fs-extra');
 
+const {
+	main
+} = require('../temp/app');
+
 process.stdin.setEncoding('utf8');
 process.stdout.write('创建文件名(首字母为大写): ');
 
-const creat = (srcDir, destDir, chunk) => {
+const creat = (srcDir, destDir, chunk, cb = () => {}) => {
 	glob.sync('**', {
 		cwd: srcDir,
 		dot: true,
@@ -46,9 +50,31 @@ const creat = (srcDir, destDir, chunk) => {
 
 	});
 
+	cb();
 	console.log(`${chalk.green('[成功]')}${'构建完成'}`);
 	process.exit(0);
 };
+
+// 写入main
+const writeMain = () => {
+	// 先删除main
+	fs.unlink(path.join(process.cwd(), 'src/web/main.js'));
+	const project = path.join(process.cwd(), 'src/web');
+
+	fs.readdirSync(project, {
+		encoding: 'utf-8'
+	}).forEach(file => {
+		// 文件路径
+		const filePath = path.join(project, file);
+
+		// 文件状态
+		const fileStat = fs.statSync(filePath);
+
+		if (fileStat.isDirectory()) {
+			fs.outputFileSync(`${process.cwd()}/src/main.js`, main(file));
+		}
+	})
+}
 
 process.stdin.on('data', (chunk) => {
 
@@ -60,6 +86,6 @@ process.stdin.on('data', (chunk) => {
 
 	const destDir = path.join(process.cwd(), 'src/web', newChunk);
 
-	creat(srcDir, destDir, newChunk);
+	creat(srcDir, destDir, newChunk, writeMain);
 
 });

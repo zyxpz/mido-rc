@@ -1,1 +1,1 @@
-export { default } from './web/Drag/index';
+export { default } from './web/Mxl'

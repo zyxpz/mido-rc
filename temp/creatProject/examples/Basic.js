@@ -1,8 +1,7 @@
 import { React, ReactDom } from 'midoReact';
-
-const Example = () => <div>Example-<%=name%></div>;
+import { <%=name%> } from '@/main';
 
 ReactDom.render(
-	<Example />,
+	<<%=name%> />,
 	document.getElementById('app')
 );
