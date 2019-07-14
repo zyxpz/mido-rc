@@ -1,8 +1,8 @@
 import { React } from 'midoReact';
 
 export default class <%=name%> extends React.Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
   }
 
   render() {

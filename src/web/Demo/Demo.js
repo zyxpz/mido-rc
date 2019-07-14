@@ -1,13 +1,13 @@
 import { React } from 'midoReact';
 
 export default class Demo extends React.Component {
-	constructor(){
-		super();
-	}
+  constructor(props){
+    super(props)
+  }
 
-	render() {
-		return (
-			<div>Demo</div>
-		);
-	}
+  render() {
+    return (
+      <div>Demo</div>
+    )
+  }
 }

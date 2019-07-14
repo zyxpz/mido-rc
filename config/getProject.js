@@ -8,6 +8,8 @@ const tpl = require('art-template');
 
 const indexHtml = require('../temp/index.art');
 
+const milieu = process.env.NODE_ENV || 'development';
+
 let cpName = ''; // component Name
 let etName = ''; // webpack entry name
 let webpackEntryArr = []; // webpackEntryArr
@@ -96,7 +98,7 @@ const getEntryFile = (dir) => {
 		cpNameArr.forEach(item => {
 			cpList.push({
 				name: item,
-				file: `/${item}.html`
+				file: milieu === 'production' ? `mido-react/dist/${item}.html` : `/${item}.html`
 			});
 		});
 
