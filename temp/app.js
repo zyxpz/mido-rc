@@ -12,8 +12,8 @@ exports.setHtml = (file) => {
   </head>
   <body>
     <div id="app"></div>
-    <script src="https://gw.alipayobjects.com/os/lib/react/16.8.6/umd/react.production.min.js"></script>
-    <script src="https://gw.alipayobjects.com/os/lib/react-dom/16.8.6/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/16.8.6/umd/react.production.min.js"></script>
+    <script src="https://cdn.bootcss.com/react-dom/16.8.6/umd/react-dom.production.min.js"></script>
     <script src="./${file}.js"></script>
   </body>
   </html>`;

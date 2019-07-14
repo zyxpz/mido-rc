@@ -9,6 +9,10 @@ export default {
 			alias: {
 				"@": `${process.cwd()}/src`
 			}
+		},
+		externals: {
+			'react': 'React',
+			'react-dom': 'ReactDom'
 		}
 	},
 	babel: {
