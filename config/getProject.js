@@ -2,7 +2,7 @@ const fs = require('fs-extra');
 
 const path = require('path');
 
-const { setHtml, setIndex, webpackEntry } = require('../temp/app');
+const { setHtml, setIndex, webpackEntry, main } = require('../temp/app');
 
 const tpl = require('art-template');
 
@@ -11,6 +11,7 @@ const indexHtml = require('../temp/index.art');
 let cpName = ''; // component Name
 let etName = ''; // webpack entry name
 let webpackEntryArr = []; // webpackEntryArr
+let mainArr = [];
 let cpNameArr = [];
 
 
@@ -34,12 +35,26 @@ const setWebpackEntry = () => {
 			};
 
 			webpackEntryArr.push(obj);
+
+			// 写入main
+			mainArr.push({ name: etName });
 		}
 	});
 
 	const etContent = webpackEntry(webpackEntryArr);
+	const mainContent = main(mainArr);
 
 	fs.outputFileSync(`${process.cwd()}/source/entry.js`, etContent);
+
+	const mainFile = `${process.cwd()}/src/main.js`;
+	// 先删除一下，再创建
+	fs.removeSync(mainFile);
+	fs.outputFile(mainFile, mainContent, () => {
+		fs.readFile(mainFile, 'utf8', (err, data) => {
+			const newData = data.replace(/,/g, '');
+			fs.writeFileSync(mainFile, newData);
+		});
+	});
 };
 
 
@@ -58,7 +73,7 @@ const getEntryFile = (dir) => {
 		if (fileStat.isDirectory() && file !== 'index') {
 			const subdir = path.join(dir, file, 'examples');
 			cpName = file;
-      
+
 			cpNameArr.push(cpName);
 
 			getEntryFile(subdir);
@@ -75,12 +90,14 @@ const getEntryFile = (dir) => {
 				fs.outputFileSync(`${process.cwd()}/source/${cpName}/index.js`, cpJs);
 			}
 		}
-    
+
 		const cpList = [];
 
 		cpNameArr.forEach(item => {
-			cpList.push({ name: item, 
-				file: `/${item}.html` });
+			cpList.push({
+				name: item,
+				file: `/${item}.html`
+			});
 		});
 
 		const buildIndexHtml = indexHtml({ cpList });

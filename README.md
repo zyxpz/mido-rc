@@ -3,7 +3,7 @@
 <details>
 <summary>开发</summary>
 
-1. 启动
+1. 启动(首次启动或新建组件启动)
 - npm start
 2. 创建
 - npm run cp

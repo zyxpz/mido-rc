@@ -44,4 +44,9 @@ exports.webpackEntry = (arr) => {
 /**
  * 组件写入main
  */
-exports.main = (name) => `export { default } from './web/${name}'`
+exports.main = (arr) => {
+  const d = arr.map(item => {
+    return `export { default as ${item.name} } from './web/${item.name}';`
+  });
+  return d;
+}
