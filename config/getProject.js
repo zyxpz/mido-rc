@@ -98,7 +98,9 @@ const getEntryFile = (dir) => {
 		cpNameArr.forEach(item => {
 			cpList.push({
 				name: item,
-				file: milieu === 'production' ? `/mido-react-rc/dist/${item}/${item}.html` : `/${item}.html`
+				file: milieu === 'production' ?
+					`/mido-react-rc/dist/${item}/${item}.html` :
+					`/${item}.html`
 			});
 		});
 
