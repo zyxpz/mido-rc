@@ -12,10 +12,16 @@ export default {
 		},
 		externals: {
 			'react': 'React',
-			'react-dom': 'ReactDom'
+			'react-dom': 'ReactDOM'
 		}
 	},
 	babel: {
-
+		"plugins": [
+			["import", {
+				"libraryName": "antd-mobile",
+				"libraryDirectory": "es",
+				"style": true // `style: true` 会加载 less 文件
+			}]
+		]
 	}
 };

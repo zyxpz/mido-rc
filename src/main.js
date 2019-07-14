@@ -1,1 +1,1 @@
-export { default as Demo } from './web/Demo';
+export { default as Demo } from './web/Demo';export { default as Popup } from './web/Popup';
