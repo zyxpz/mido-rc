@@ -1,19 +1,71 @@
 import path from 'path';
 
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+
 const { entry } = require(path.join(process.cwd(), './source/entry'));
 
+const milieu = process.env.NODE_ENV || 'development';
+
 export default {
-	webpack: {
-		entry,
-		resolve: {
-			alias: {
-				"@": `${process.cwd()}/src`
+	webpack(config) {
+		let newConfig = config;
+		// 删除默认html loader
+		newConfig.module.rules.some((d, i) => {
+			if (/\.html/.test(d.test)) {
+				newConfig.module.rules.splice(i, 1);
 			}
-		},
-		externals: {
-			'react': 'React',
-			'react-dom': 'ReactDOM'
-		}
+		});
+
+		// 删除默认output
+		delete newConfig.output.filename;
+
+		// 删除默认MiniCssExtractPlugin
+		newConfig.plugins.some((d, i) => {
+			if (/.css/.test(d.options.filename)) {
+				newConfig.plugins.splice(i, 1);
+			}
+		});
+		newConfig = {
+			entry,
+			output: {
+				filename: milieu === 'production' ? '[name]/[name].js' : '[name].js'
+			},
+			resolve: {
+				alias: {
+					"@": `${process.cwd()}/src`
+				}
+			},
+			module: {
+				rules: [
+					{
+						test: /\.html$/i,
+						loader: require.resolve('file-loader'),
+						options: {
+							name(file) {
+								if (milieu === 'production') {
+									if (/index/.test(file)) {
+										return '[name].[ext]';
+									}
+									return `/[name]/[name].[ext]`;
+								}
+								return '[name].[ext]';
+							}
+						}
+					}
+				]
+			},
+			externals: {
+				'react': 'React',
+				'react-dom': 'ReactDOM'
+			},
+			plugins: [
+				new MiniCssExtractPlugin({
+					filename: milieu === 'production' ? '[name]/[name].css' : '[name].css',
+					allChunks: true
+				})
+			]
+		};
+		return newConfig;
 	},
 	babel: {
 		"plugins": [

@@ -33,7 +33,7 @@ exports.setIndex = (name, file) => {
  */
 exports.webpackEntry = (arr) => {
   const d = arr.map(item => {
-    return `'${[item.name]}-example': '${item.path}'
+    return `'${[item.name]}': '${item.path}'
     `;
   });
   return `exports.entry = {

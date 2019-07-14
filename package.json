@@ -11,7 +11,7 @@
     "creat": "node ./config/getProject.js",
     "cp": "node ./config/creatProject.js",
     "dev": "mido dev -p 9001",
-    "build": "rm -rf ./source && cross-env NODE_ENV=production npm run creat && mido build",
+    "build": "rm -rf ./source && cross-env NODE_ENV=production npm run creat && cross-env NODE_ENV=production mido build",
     "lib": "rm -rf ./lib && babel src --out-dir lib --copy-files --ignore **.test.js,**.md,examples/**",
     "publish": "npm run lib && npm publish",
     "lint": "esw ./config/*.* ./src/**/*.js",

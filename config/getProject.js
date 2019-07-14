@@ -84,7 +84,7 @@ const getEntryFile = (dir) => {
 			const fileExtName = path.extname(filePath);
 			if (fileExtName === '.js') {
 				// 生成html
-				const cpHtml = setHtml(`${cpName}-example`);
+				const cpHtml = setHtml(`${cpName}`);
 				// 生成js
 				const cpJs = setIndex(cpName, filePath);
 
@@ -98,7 +98,7 @@ const getEntryFile = (dir) => {
 		cpNameArr.forEach(item => {
 			cpList.push({
 				name: item,
-				file: milieu === 'production' ? `/mido-react-rc/dist/${item}.html` : `/${item}.html`
+				file: milieu === 'production' ? `/mido-react-rc/dist/${item}/${item}.html` : `/${item}.html`
 			});
 		});
 
