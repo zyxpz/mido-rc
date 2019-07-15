@@ -2,19 +2,20 @@
  * 设置预览html
  */
 exports.setHtml = (file) => {
-  return `<!DOCTYPE html>
+	return `<!DOCTYPE html>
   <html lang="zh">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./${file}.css">
+    <link rel="stylesheet" href="../common.css">
     <title>Document</title>
   </head>
   <body>
     <div id="app"></div>
     <script src="https://cdn.bootcss.com/react/16.8.6/umd/react.production.min.js"></script>
     <script src="https://cdn.bootcss.com/react-dom/16.8.6/umd/react-dom.production.min.js"></script>
+    <script src="../common.js"></script>
     <script src="./${file}.js"></script>
   </body>
   </html>`;
@@ -24,7 +25,7 @@ exports.setHtml = (file) => {
  * 设置预览js
  */
 exports.setIndex = (name, file) => {
-  return `import './${name}.html';
+	return `import './${name}.html';
          import '${file}';`;
 };
 
@@ -32,11 +33,11 @@ exports.setIndex = (name, file) => {
  * 设置entry
  */
 exports.webpackEntry = (arr) => {
-  const d = arr.map(item => {
-    return `'${[item.name]}': '${item.path}'
+	const d = arr.map(item => {
+		return `'${[item.name]}': '${item.path}'
     `;
-  });
-  return `exports.entry = {
+	});
+	return `exports.entry = {
     index: '${process.cwd()}/source/index.html',
     ${d}
   }`;
@@ -46,8 +47,8 @@ exports.webpackEntry = (arr) => {
  * 组件写入main
  */
 exports.main = (arr) => {
-  const d = arr.map(item => {
-    return `export { default as ${item.name} } from './web/${item.name}';`
-  });
-  return d;
-}
+	const d = arr.map(item => {
+		return `export { default as ${item.name} } from './web/${item.name}';`;
+	});
+	return d;
+};

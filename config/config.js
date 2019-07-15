@@ -60,17 +60,41 @@ export default {
 			},
 			plugins: [
 				new MiniCssExtractPlugin({
-					filename: milieu === 'production' ? '[name]/[name].css' : '[name].css',
+					filename: '[name].css',
 					allChunks: true
 				})
-			]
+			],
+			optimization: {
+				splitChunks: {
+					cacheGroups: {
+						default: {
+							minChunks: 2,
+							priority: -20,
+							reuseExistingChunk: true,
+						},
+						// styles: {
+						// 	name: 'styles',
+						// 	test: /\.css$/,
+						// 	chunks: 'all',
+						// 	enforce: true,
+						// },
+						vendor: {
+							chunks: "all",
+							test: /[\\/]node_modules[\\/]/,
+							name: "common",
+							maxInitialRequests: 5,
+							minSize: 0,
+						}
+					}
+				}
+			}
 		};
 		return newConfig;
 	},
 	babel: {
 		"plugins": [
 			["import", {
-				"libraryName": "antd-mobile",
+				"libraryName": "antd",
 				"libraryDirectory": "es",
 				"style": true // `style: true` 会加载 less 文件
 			}]

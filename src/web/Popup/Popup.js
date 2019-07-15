@@ -1,15 +1,15 @@
 import { React } from 'midoReact';
 
 
-import { Modal } from 'antd-mobile';
+import { Modal } from 'antd';
 
-import View from './View';
+import view from './View';
 
 const {
 	Component
 } = React;
 
-@View()
+@view()
 
 class PopUp extends Component {
 

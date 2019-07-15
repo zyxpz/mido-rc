@@ -5,27 +5,26 @@ const {
 } = React;
 
 
-export default (opts = {}) => WrapWithView => {
+export default () => WrapWithView => {
 
 	const target = document.querySelector('body');
 
 	const container = document.createElement('div');
 
 	const render = (renderDom, opts) => {
-
-		opts = {
+		const newOpts = {
 			...opts,
 			onCloseSoon() {
 				ReactDom.unmountComponentAtNode(container);
 				target.removeChild(container);
 			},
 			onOk(res) {
-				opts.onCloseSoon();
-				opts.ok(res);
+				newOpts.onCloseSoon();
+				newOpts.ok(res);
 			},
 			onCancel(res) {
-				opts.onCloseSoon();
-				opts.cancel(res);
+				newOpts.onCloseSoon();
+				newOpts.cancel(res);
 			},
 		};
 
@@ -36,12 +35,12 @@ export default (opts = {}) => WrapWithView => {
 		const element = (
 			<Viewer
 				renderDom={renderDom}
-				opts={opts}
-				ref={instance => comp = instance}
+				opts={newOpts}
+				ref={instance => { comp = instance; }}
 			/>
 		);
 
-		let callBack = () => (comp, opts.onSure, opts.onClose);
+		let callBack = () => (comp, newOpts.onSure, newOpts.onClose);
 
 
 		ReactDom.render(element, container, callBack);
@@ -53,17 +52,13 @@ export default (opts = {}) => WrapWithView => {
 
 	class Viewer extends Component {
 
-    static show = popUp;
+		static show = popUp;
 
-    constructor(params) {
-    	super(params);
-    }
-
-    render() {
-    	return (
-    		<WrapWithView {...this.props} />
-    	);
-    }
+		render() {
+			return (
+				<WrapWithView {...this.props} />
+			);
+		}
 	}
 
 	return Viewer;
