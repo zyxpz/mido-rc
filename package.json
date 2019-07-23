@@ -17,7 +17,8 @@
     "lint": "esw ./config/*.* ./src/**/*.js",
     "lint:fix": "npm run lint -- --fix",
     "lint:watch": "npm run lint -- --fix --watch",
-    "lint:style": "stylelint --fix --syntax less src/**/*.less"
+    "lint:style": "stylelint --fix --syntax less src/web/**/*.less",
+    "lint-staged": "lint-staged"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.0",
@@ -32,12 +33,31 @@
     "eslint-watch": "^5.1.2",
     "fs-extra": "^8.0.1",
     "glob": "^7.1.4",
+    "lint-staged": "^9.2.0",
     "mido-construct": "^1.2.0",
+    "pre-commit": "^1.2.2",
     "stylelint": "^10.0.1",
     "stylelint-config-standard": "^18.3.0"
   },
   "dependencies": {
     "antd": "^3.20.2",
     "antd-mobile": "^2.2.14"
-  }
+  },
+  "lint-staged": {
+    "{src,config}/**/*.{js,jsx,vue}": [
+      "esw --fix",
+      "git add"
+    ],
+    "*.md": [
+      "esw --ext '.md' --fix",
+      "git add"
+    ],
+    "*.less": [
+      "stylelint --fix --syntax less",
+      "git add"
+    ]
+  },
+  "pre-commit": [
+    "lint-staged"
+  ]
 }
