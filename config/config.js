@@ -28,7 +28,19 @@ export default {
 		newConfig = {
 			entry,
 			output: {
-				filename: milieu === 'production' ? '[name]/[name].js' : '[name].js'
+				filename({ chunk: {
+					entryModule: {
+						id
+					}
+				} }) {
+					if (milieu !== 'production') {
+						return /index.html/.test(id) ? '[name].js' : '[name].js';
+					} else {
+						return /index.html/.test(id) ?
+							'[name].js' :
+							'[name]/[name].js';
+					}
+				}
 			},
 			resolve: {
 				alias: {
@@ -60,7 +72,7 @@ export default {
 			},
 			plugins: [
 				new MiniCssExtractPlugin({
-					filename: '[name].css',
+					filename: '[name]/[name].css',
 					allChunks: true
 				})
 			],
@@ -94,10 +106,9 @@ export default {
 	babel: {
 		"plugins": [
 			["import", {
-				"libraryName": "antd",
+				"libraryName": "antd-mobile",
 				"libraryDirectory": "es",
 				"style": true // `style: true` 会加载 less 文件
 			}]
 		]
 	}
-};
