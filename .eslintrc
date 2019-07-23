@@ -6,7 +6,9 @@
   ],
   "rules": {
     "no-unused-vars": 1,
-    "require-yield": 0
+    "require-yield": 0,
+    "no-useless-constructor": 1,
+    "react/prop-types": 1
   },
   "parserOptions": {
     "ecmaVersion": 7,

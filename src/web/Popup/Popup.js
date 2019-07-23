@@ -1,7 +1,7 @@
 import { React } from 'midoReact';
 
 
-import { Modal } from 'antd';
+import { Modal } from 'antd-mobile';
 
 import view from './View';
 

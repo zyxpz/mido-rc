@@ -72,7 +72,7 @@ export default {
 			},
 			plugins: [
 				new MiniCssExtractPlugin({
-					filename: '[name]/[name].css',
+					filename: milieu === 'production' ? '[name]/[name].css' : '[name].css',
 					allChunks: true
 				})
 			],
@@ -90,13 +90,13 @@ export default {
 						// 	chunks: 'all',
 						// 	enforce: true,
 						// },
-						vendor: {
-							chunks: "all",
-							test: /[\\/]node_modules[\\/]/,
-							name: "common",
-							maxInitialRequests: 5,
-							minSize: 0,
-						}
+						// vendor: {
+						// 	chunks: "all",
+						// 	test: /[\\/]node_modules[\\/]/,
+						// 	name: "common",
+						// 	maxInitialRequests: 5,
+						// 	minSize: 0,
+						// }
 					}
 				}
 			}

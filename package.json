@@ -10,7 +10,7 @@
     "start": "npm run dev",
     "creat": "node ./config/getProject.js",
     "cp": "node ./config/creatProject.js",
-    "dev": "rm -rf ./source && npm run creat && mido dev -p 9001",
+    "dev": "rm -rf ./source && npm run creat && cross-env NODE_ENV=development mido dev -p 9001",
     "build": "rm -rf ./source && cross-env NODE_ENV=production npm run creat && cross-env NODE_ENV=production mido build",
     "lib": "rm -rf ./lib && babel src --out-dir lib --configFile ./config/babel.config.js",
     "publish": "npm run lib && npm publish",

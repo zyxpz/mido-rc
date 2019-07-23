@@ -8,14 +8,13 @@ exports.setHtml = (file) => {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="./${file}.css">
     <title>Document</title>
   </head>
   <body>
     <div id="app"></div>
     <script src="https://cdn.bootcss.com/react/16.8.6/umd/react.production.min.js"></script>
     <script src="https://cdn.bootcss.com/react-dom/16.8.6/umd/react-dom.production.min.js"></script>
-    <script src="../common.js"></script>
     <script src="./${file}.js"></script>
   </body>
   </html>`;

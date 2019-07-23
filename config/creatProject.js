@@ -3,10 +3,6 @@ const glob = require('glob');
 const path = require('path');
 const fs = require('fs-extra');
 
-const {
-	main
-} = require('../temp/app');
-
 process.stdin.setEncoding('utf8');
 process.stdout.write('创建文件名(首字母为大写): ');
 
