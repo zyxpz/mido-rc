@@ -15,3 +15,39 @@
 - npm run publish
 
 </details>
+
+<details open=true>
+<summary>引用，按需加载</summary>
+
+## 使用方式 => 按需加载，需要安装 `babel-plugin-import`
+
+```vim
+npm install babel-plugin-import --save-dev
+```
+
+- 配置`.babelrc`
+
+```vim
+{
+	"plugins": [
+		[
+			"import",
+				{
+					"libraryName": "mido-rc",
+					"libraryDirectory": "es",
+					"camel2DashComponentName": false,
+          "style": true
+				}
+		]
+	]
+}
+```
+
+- 使用
+
+```js
+import { xxx } from 'mido-rc';
+```
+</details>
+
+## 组件

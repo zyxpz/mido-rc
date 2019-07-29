@@ -63,7 +63,7 @@
       "esw --fix",
       "git add"
     ],
-    "*.md": [
+    "src/web/**/*.md": [
       "esw --ext '.md' --fix",
       "git add"
     ],
