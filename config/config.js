@@ -9,12 +9,24 @@ const milieu = process.env.NODE_ENV || 'development';
 export default {
 	webpack(config) {
 		let newConfig = config;
+
 		// 删除默认html loader
 		newConfig.module.rules.some((d, i) => {
 			if (/\.html/.test(d.test)) {
 				newConfig.module.rules.splice(i, 1);
 			}
 		});
+
+		// 删除css，less mini-css-extract-plugin
+		// newConfig.module.rules.some(d => {
+		// 	if (/\.css/.test(d.test) || /\.less/.test(d.test)) {
+		// 		d.use.some((cd, ci) => {
+		// 			if (/mini-css-extract-plugin/.test(cd.loader)) {
+		// 				d.use.splice(ci, 1);
+		// 			}
+		// 		});
+		// 	}
+		// });
 
 		// 删除默认output
 		delete newConfig.output.filename;
@@ -72,7 +84,7 @@ export default {
 			},
 			plugins: [
 				new MiniCssExtractPlugin({
-					filename: milieu === 'production' ? '[name]/[name].css' : '[name].css',
+					filename: '[name].css',
 					allChunks: true
 				})
 			],
@@ -84,12 +96,12 @@ export default {
 							priority: -20,
 							reuseExistingChunk: true,
 						},
-						// styles: {
-						// 	name: 'styles',
-						// 	test: /\.css$/,
-						// 	chunks: 'all',
-						// 	enforce: true,
-						// },
+						styles: {
+							name: 'styles',
+							test: /\.(css|less)$/,
+							chunks: 'all',
+							enforce: true,
+						},
 						// vendor: {
 						// 	chunks: "all",
 						// 	test: /[\\/]node_modules[\\/]/,
@@ -97,6 +109,11 @@ export default {
 						// 	maxInitialRequests: 5,
 						// 	minSize: 0,
 						// }
+						common: {
+							chunks: 'all',
+							test: /.(js|jsx)$/,
+							name: "commons"
+						}
 					}
 				}
 			}

@@ -1,1 +1,1 @@
-export { default as Demo } from './web/Demo';export { default as Popup } from './web/Popup';
+export { default as Demo } from '/Users/maxiaolong/Documents/work/mido-react-rc/src/web/Demo';
