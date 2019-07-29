@@ -52,7 +52,9 @@ exports.webpackEntry = (arr) => {
  */
 exports.main = (arr) => {
 	const d = arr.map(item => {
-		return `export { default as ${item.name} } from '${process.cwd()}/src/web/${item.name}';`;
+		return `
+    export { default as ${item.name} } from '${process.cwd()}/src/web/${item.name}';\n
+    `;
 	});
 	return d;
 };

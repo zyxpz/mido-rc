@@ -2,7 +2,8 @@
   "extends": ["mido", "plugin:react/recommended"],
   "parser": "babel-eslint",
   "plugins": [
-    "react"
+    "react",
+    "markdown"
   ],
   "rules": {
     "no-unused-vars": 1,

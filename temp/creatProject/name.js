@@ -8,7 +8,7 @@ export default class <%=name%> extends React.Component {
 
   render() {
     return (
-      <div><%=name%></div>
+      <div className="<%=name%>"><%=name%></div>
     )
   }
 }
