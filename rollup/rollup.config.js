@@ -63,6 +63,11 @@ const rollupConfig = () => {
 	);
 };
 
+/**
+ * 
+ * @param {component} cModuleMap 
+ * @param {外部依赖} external 
+ */
 const creatModule = (cModuleMap, external) => ({
 	// 入口
 	input: {
@@ -77,7 +82,6 @@ const creatModule = (cModuleMap, external) => ({
 		entryFileNames: '[name]/index.js',
 		exports: 'named'
 	},
-	experimentalCodeSplitting: true,
 	plugins: [
 		clear({
 			targets: ['es']
@@ -99,7 +103,7 @@ const creatModule = (cModuleMap, external) => ({
 			include: ['src/**/*.js'],
 			fix: true
 		}),
-		// resolve(),
+		resolve(),
 		...basePlugin(),
 	],
 	// 将模块视为外部模块，不会打包在库中
@@ -131,7 +135,7 @@ const creatModuleStyle = (moduleName, external) => ({
 			// 样式输出到 createModuleConfig 创建的模块文件夹下
 			extract: `es/${moduleName}/style/index.css`
 		}),
-		// resolve(),
+		resolve(),
 		...basePlugin()
 	],
 	external: id => external.some(e => id.indexOf(e) === 0),
@@ -155,33 +159,6 @@ const basePlugin = () => ([
 			"@babel/preset-react"
 		],
 		"plugins": [
-			[
-				"@babel/plugin-transform-runtime",
-				{
-					"corejs": false,
-					"helpers": true,
-					"regenerator": true,
-					"useESModules": false,
-					"runtimeHelpers": true
-				},
-			],
-			"@babel/plugin-transform-react-jsx",
-			"babel-plugin-syntax-jsx",
-			"babel-plugin-transform-vue-jsx",
-			"babel-plugin-dynamic-import-webpack",
-			"@babel/plugin-proposal-export-default-from",
-			[
-				"@babel/plugin-proposal-decorators",
-				{
-					"legacy": true
-				}
-			],
-			[
-				"@babel/plugin-proposal-class-properties",
-				{
-					"loose": true
-				}
-			],
 			"babel-plugin-add-module-exports"
 		]
 	})

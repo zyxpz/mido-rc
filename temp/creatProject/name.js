@@ -1,4 +1,4 @@
-import { React } from 'midoReact';
+import React from 'react';
 import './<%=name%>.less';
 
 export default class <%=name%> extends React.Component {

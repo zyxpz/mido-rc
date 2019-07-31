@@ -16,7 +16,7 @@
     "cp": "node ./config/creatProject.js",
     "dev": "npm run clearSource && npm run creat && cross-env NODE_ENV=development mido dev -p 9001",
     "build": "npm run clearSource && cross-env NODE_ENV=production npm run creat && cross-env NODE_ENV=production mido build",
-    "lib": "npm run creat && rollup -c ./rollup/rollup.config.js",
+    "lib": "npm run clearSource && npm run creat && rollup -c ./rollup/rollup.config.js",
     "clearSource": "node ./config/clearSource.js",
     "publish": "npm run lib && npm publish",
     "lint": "esw ./config/*.* ./src/**/*.js",
@@ -69,7 +69,7 @@
       "esw --ext '.md' --fix",
       "git add"
     ],
-    "*.less": [
+    "src/web/**/*.less": [
       "stylelint --fix --syntax less",
       "git add"
     ]
