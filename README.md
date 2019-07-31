@@ -22,6 +22,11 @@
 ## 使用方式 => 按需加载，需要安装 `babel-plugin-import`
 
 ```vim
+import conponentName from 'mido-rc/es/conponentName';
+import 'mido-rc/es/conponentName/style/index.css';
+```
+
+```vim
 npm install babel-plugin-import --save-dev
 ```
 
