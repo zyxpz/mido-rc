@@ -41,6 +41,7 @@
     "fs-extra": "^8.0.1",
     "glob": "^7.1.4",
     "lint-staged": "^9.2.0",
+    "mido-construct": "^1.2.3",
     "pre-commit": "^1.2.2",
     "rollup": "^1.17.0",
     "rollup-plugin-babel": "^4.3.3",
@@ -57,8 +58,10 @@
   "dependencies": {
     "antd": "^3.20.2",
     "antd-mobile": "^2.2.14",
-    "mido-construct": "^1.2.0",
     "react": "^16.8.6"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.x"
   },
   "lint-staged": {
     "{src,config}/**/*.{js,jsx,vue}": [
