@@ -14,6 +14,7 @@ import clear from 'rollup-plugin-clear';
 import { eslint } from 'rollup-plugin-eslint';
 import postcss from 'rollup-plugin-postcss';
 import resolve from 'rollup-plugin-node-resolve';
+import stylePlugin from './rollup-style-plugin';
 
 
 import pkg from '../package.json';
@@ -133,9 +134,10 @@ const creatModuleStyle = (moduleName, external) => ({
 				}]
 			],
 			// 样式输出到 createModuleConfig 创建的模块文件夹下
-			extract: `es/${moduleName}/style/index.css`
+			extract: `es/${moduleName}/style/css/index.css`
 		}),
 		resolve(),
+		stylePlugin('web'),
 		...basePlugin()
 	],
 	external: id => external.some(e => id.indexOf(e) === 0),
