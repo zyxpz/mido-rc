@@ -27,7 +27,7 @@ import conponentName from 'mido-rc/es/componentName';
 // 引入css
 import 'mido-rc/es/componentName/style/css';
 // 引入less
-import 'mido-rc/es/componentName'
+import 'mido-rc/es/componentName/style'
 ```
 
 ```vim
