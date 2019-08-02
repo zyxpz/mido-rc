@@ -22,8 +22,12 @@
 ## 使用方式 => 按需加载，需要安装 `babel-plugin-import`
 
 ```vim
-import conponentName from 'mido-rc/es/conponentName';
-import 'mido-rc/es/conponentName/style/index.css';
+import conponentName from 'mido-rc/es/componentName';
+
+// 引入css
+import 'mido-rc/es/componentName/style/css';
+// 引入less
+import 'mido-rc/es/componentName'
 ```
 
 ```vim
@@ -40,8 +44,7 @@ npm install babel-plugin-import --save-dev
 				{
 					"libraryName": "mido-rc",
 					"libraryDirectory": "es",
-					"camel2DashComponentName": false,
-          "style": true
+                    "style": true
 				}
 		]
 	]
