@@ -47,6 +47,7 @@ export default class ExcelCp extends React.Component {
 
 		return (
 			<div
+				className="mido-excel"
 				onClick={() => { this.handleOnClick(); }}
 			>
 				<Button>
