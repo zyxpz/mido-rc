@@ -1,7 +1,9 @@
 import { React, ReactDom } from 'midoReact';
-import { Test } from '@/main';
+import { ExcelCp } from '@/main';
 
 ReactDom.render(
-	<Test />,
+	<ExcelCp 
+		text={'ExcelCp'}
+	/>,
 	document.getElementById('app')
 );
