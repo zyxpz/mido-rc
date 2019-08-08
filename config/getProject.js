@@ -84,7 +84,7 @@ const getEntryFile = (dir) => {
 			const fileExtName = path.extname(filePath);
 			if (fileExtName === '.js') {
 				// 生成html
-				const cpHtml = setHtml(`${cpName}`, milieu);
+				const cpHtml = setHtml(cpName);
 				// 生成js
 				const cpJs = setIndex(cpName, filePath);
 

@@ -1,25 +1,23 @@
 /**
  * 设置预览html
  */
-exports.setHtml = (file, milieu) => {
+exports.setHtml = (file) => {
 	return `<!DOCTYPE html>
   <html lang="zh">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    ${milieu === 'production' ?
-		'<link rel="stylesheet" href="../styles.css"></link>' :
-		'<link rel="stylesheet" href="./styles.css"></link>'}
+    <link href="https://cdn.bootcss.com/antd/3.20.7/antd.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="./${file}.css"></link>
     <title>Document</title>
   </head>
   <body>
     <div id="app"></div>
     <script src="https://cdn.bootcss.com/react/16.8.6/umd/react.production.min.js"></script>
     <script src="https://cdn.bootcss.com/react-dom/16.8.6/umd/react-dom.production.min.js"></script>
-    ${milieu === 'production' ?
-		'<script src="../commons.js"></script> <script src="../styles.js"></script>' :
-		'<script src="./commons.js"></script> <script src="./styles.js"></script>'}
+    <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdn.bootcss.com/antd/3.20.7/antd.min.js"></script>
     <script src="./${file}.js"></script>
   </body>
   </html>`;

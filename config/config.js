@@ -80,11 +80,13 @@ export default {
 			},
 			externals: {
 				'react': 'React',
-				'react-dom': 'ReactDOM'
+				'react-dom': 'ReactDOM',
+				'antd': 'antd',
+				'xlsx': 'XLSX'
 			},
 			plugins: [
 				new MiniCssExtractPlugin({
-					filename: '[name].css',
+					filename: milieu !== 'production' ? '[name].css' : '[name]/[name].css',
 					allChunks: true
 				})
 			],
@@ -96,12 +98,12 @@ export default {
 							priority: -20,
 							reuseExistingChunk: true,
 						},
-						styles: {
-							name: 'styles',
-							test: /\.(css|less)$/,
-							chunks: 'all',
-							enforce: true,
-						},
+						// styles: {
+						// 	name: 'styles',
+						// 	test: /\.(css|less)$/,
+						// 	chunks: 'all',
+						// 	enforce: true,
+						// },
 						// vendor: {
 						// 	chunks: "all",
 						// 	test: /[\\/]node_modules[\\/]/,
@@ -109,11 +111,11 @@ export default {
 						// 	maxInitialRequests: 5,
 						// 	minSize: 0,
 						// }
-						common: {
-							chunks: 'all',
-							test: /.(js|jsx)$/,
-							name: "commons"
-						}
+						// common: {
+						// 	chunks: 'all',
+						// 	test: /.(js|jsx)$/,
+						// 	name: "commons"
+						// }
 					}
 				}
 			}
@@ -121,12 +123,16 @@ export default {
 		return newConfig;
 	},
 	babel: {
-		"plugins": [
-			["import", {
-				"libraryName": "antd",
-				"libraryDirectory": "es",
-				"style": true // `style: true` 会加载 less 文件
-			}]
+		plugins: [
+			[
+				require(`${process.cwd()}/config/babel-plugin-import`), 
+				{
+					libraryName: "@/main",
+					libraryDirectory: `${process.cwd()}/src/web`,
+					// camel2DashComponentName: false,
+					"style": true // `style: true` 会加载 less 文件
+				}
+			]
 		]
 	}
 };
