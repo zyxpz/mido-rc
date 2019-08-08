@@ -18,6 +18,7 @@ exports.setHtml = (file) => {
     <script src="https://cdn.bootcss.com/react-dom/16.8.6/umd/react-dom.production.min.js"></script>
     <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdn.bootcss.com/antd/3.20.7/antd.min.js"></script>
+    <script src="https://cdn.bootcss.com/xlsx/0.14.4/xlsx.full.min.js"></script>
     <script src="./${file}.js"></script>
   </body>
   </html>`;

@@ -128,9 +128,7 @@ export default {
 				require(`${process.cwd()}/config/babel-plugin-import`), 
 				{
 					libraryName: "@/main",
-					libraryDirectory: `${process.cwd()}/src/web`,
-					// camel2DashComponentName: false,
-					"style": true // `style: true` 会加载 less 文件
+					libraryDirectory: `${process.cwd()}/src/web`
 				}
 			]
 		]
