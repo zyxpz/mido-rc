@@ -4,3 +4,4 @@ node_modules/**
 .vscode
 package-lock
 dist
+src/web/*/__test__

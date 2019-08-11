@@ -41,7 +41,7 @@ const creat = (srcDir, destDir, chunk) => {
 				fs.renameSync(destPath, `${destDir}/${chunk}.js`);
 			}
 			if (testName === 'name') {
-				fs.renameSync(destPath, `${destDir}/test/${chunk}.test.js`);
+				fs.renameSync(destPath, `${destDir}/__test__/${chunk}.test.js`);
 			}
 			if (lessName === 'name') {
 				fs.renameSync(destPath, `${destDir}/${chunk}.less`);
