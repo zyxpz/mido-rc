@@ -83,13 +83,15 @@ const getEntryFile = (dir) => {
 			// 文件后缀
 			const fileExtName = path.extname(filePath);
 			if (fileExtName === '.js') {
-				// 生成html
-				const cpHtml = setHtml(cpName);
-				// 生成js
-				const cpJs = setIndex(cpName, filePath);
+				if (/Basic/.test(filePath)) {
+					// 生成html
+					const cpHtml = setHtml(cpName);
+					// 生成js
+					const cpJs = setIndex(cpName, filePath);
 
-				fs.outputFileSync(`${process.cwd()}/source/${cpName}/${cpName}.html`, cpHtml);
-				fs.outputFileSync(`${process.cwd()}/source/${cpName}/index.js`, cpJs);
+					fs.outputFileSync(`${process.cwd()}/source/${cpName}/${cpName}.html`, cpHtml);
+					fs.outputFileSync(`${process.cwd()}/source/${cpName}/index.js`, cpJs);
+				}
 			}
 		}
 
