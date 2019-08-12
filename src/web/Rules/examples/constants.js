@@ -1,26 +1,16 @@
-import { React } from 'midoReact';
-
 const rules = [{
-	key: '(',
-	render() {
-		return (<div className="rule-wrap-conditions"><span>(</span></div>);
-	}
+	value: '(',
+	className: 'rule-wrap-conditions',
 },
 {
-	key: ')',
-	render() {
-		return (<div className="rule-wrap-conditions"><span>)</span></div>);
-	}
+	value: ')',
+	className: 'rule-wrap-conditions',
 }, {
-	key: '||',
-	render() {
-		return (<div className="rule-wrap-conditions"><span>或</span></div>);
-	}
+	value: '||',
+	className: 'rule-wrap-conditions',
 }, {
-	key: '&&',
-	render() {
-		return (<div className="rule-wrap-conditions"><span>且</span></div>);
-	}
+	value: '&',
+	className: 'rule-wrap-conditions',
 }];
 
 export {

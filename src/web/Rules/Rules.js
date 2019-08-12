@@ -1,65 +1,78 @@
-import React, { createElement } from 'react';
+import React, { createElement, useState } from 'react';
 import PropsTypes from 'prop-types';
 import './Rules.less';
 
-import { Input } from 'antd';
-const {
-	TextArea
-} = Input;
-
 const Rules = props => {
+
+	const [whData, setWhData] = useState({ list: [] });
+
 	const {
 		rulesData,
-		testArea
+		rulesChangeData
 	} = props;
 
 	const {
-		autosize,
-		defaultValue,
-		value
-	} = testArea;
+		list
+	} = whData;
+
+	// 点击匹配规则
+	const handleConditionsClick = e => {
+		const value = e.target.innerText;
+		const newList = list.concat(value);
+		setWhData({
+			list: newList
+		});
+	};
+
+	// 回调结果
+	if (list.length) {
+		let newData = '';
+		list.forEach(item => {
+			newData += item;
+		});
+		rulesChangeData(newData);
+	}
 
 	return (
 		<div className="mido-roules">
 			{
 				rulesData.map((item, key) => {
 					return createElement(
-						item.render,
+						'div',
 						{
 							key,
-							className: 'mido-rules-conditions',
-							onClick: (e) => { this.handleConditionsClick(e); }
-						}
+							className: `mido-rules-conditions ${item.className}`,
+							onClick: (e) => { handleConditionsClick(e); }
+						},
+						item.value
 					);
 				})
 			}
-			<TextArea
-				autosize={autosize}
-				defaultValue={defaultValue}
-				value={value}
-			/>
+			<div className="mido-rules-warehouse">
+				{
+					list.map((item, key) => {
+						return createElement(
+							'span',
+							{
+								key,
+							},
+							item
+						);
+					})
+				}
+			</div>
 		</div>
 	);
 };
 
-export default Rules;
-
 Rules.defaultProps = {
 	rulesData: [],
-	testArea: {
-		autosize: false, // 自适应内容高度
-		defaultValue: '', // 输入框默认值
-		value: '', // 输入框内容
-		onPressEnter: () => { }
-	}
+	rulesChangeData: () => {}
 };
 
 Rules.propTypes = {
 	rulesData: PropsTypes.array,
-	testArea: PropsTypes.objectOf({
-		autosize: PropsTypes.string,
-		defaultValue: PropsTypes.string,
-		value: PropsTypes.string,
-		onPressEnter: PropsTypes.func
-	})
+	rulesChangeData: PropsTypes.func
 };
+
+export default Rules;
