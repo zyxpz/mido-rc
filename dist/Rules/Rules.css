@@ -1,5 +1,13 @@
-.Rules {
-  color: blue;
+.mido-rules-conditions {
+  cursor: pointer;
+}
+.mido-rules-conditions span {
+  cursor: not-allowed;
+}
+.mido-rules-warehouse {
+  width: 300px;
+  height: 100px;
+  border: solid 1px black;
 }
 
 .rule-wrap-conditions {
