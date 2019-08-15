@@ -56,11 +56,13 @@ export default (fileName) => {
 				const fileExtName = path.extname(filePath);
 
 				if (fileExtName === '.less') {
-					// 获取less内容
-					const cpLess = fs.readFileSync(filePath, {
-						encoding: 'utf-8'
-					});
-					writeStyle(cpName, cpLess);
+					if (!/examples/.test(filePath)) {
+						// 获取less内容
+						const cpLess = fs.readFileSync(filePath, {
+							encoding: 'utf-8'
+						});
+						writeStyle(cpName, cpLess);
+					}
 				}
 			}
 		});
