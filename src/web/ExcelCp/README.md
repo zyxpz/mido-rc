@@ -1,6 +1,6 @@
 ## ExcelCp
 
-### [ExcelCp](https://zyxpz.github.io/mido-react-rc/dist/ExcelCp/ExcelCp.html)
+### [ExcelCp](https://zyxpz.github.io/mido-rc/dist/ExcelCp/ExcelCp.html)
 
 ### API
 
