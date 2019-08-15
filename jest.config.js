@@ -3,7 +3,7 @@ module.exports = {
 	transform: {
 		'^.+\\.(js|jsx|mjs)$': '<rootDir>/node_modules/babel-jest'
 	},
-	testPathIgnorePatterns: ['<rootDir>/node_modules/'], // 转换时需忽略的文件
+	testPathIgnorePatterns: ['<rootDir>/node_modules/', "<rootDir>/config"], // 转换时需忽略的文件
 	testMatch: ['<rootDir>/src/web/**/__test__/*.test.(js|jsx|mjs)'],
 	moduleNameMapper: {
 		"\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":

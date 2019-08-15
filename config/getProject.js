@@ -101,7 +101,7 @@ const getEntryFile = (dir) => {
 			cpList.push({
 				name: item,
 				file: milieu === 'production' ?
-					`/mido-react-rc/dist/${item}/${item}.html` :
+					`/mido-rc/dist/${item}/${item}.html` :
 					`/${item}.html`
 			});
 		});

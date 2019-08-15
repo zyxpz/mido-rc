@@ -74,6 +74,10 @@
   "lint-staged": {
     "{src,config}/**/*.{js,jsx,vue}": [
       "esw --fix",
+      "git add"
+    ],
+    "src/**/*.{js,jsx,vue}": [
+      "esw --fix",
       "git add",
       "npm run test"
     ],
