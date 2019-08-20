@@ -33,7 +33,7 @@ const setWebpackEntry = () => {
 
 			const obj = {
 				name: etName,
-				path: `${process.cwd()}/source/${etName}/index.js`
+				path: path.join(process.cwd(), 'source', etName, 'index.js')
 			};
 
 			webpackEntryArr.push(obj);
@@ -48,7 +48,7 @@ const setWebpackEntry = () => {
 
 	fs.outputFileSync(`${process.cwd()}/source/entry.js`, etContent);
 
-	const mainFile = `${process.cwd()}/src/main.js`;
+	const mainFile = path.join(process.cwd(), 'src', 'main.js');
 	// 先删除一下，再创建
 	fs.removeSync(mainFile);
 	fs.outputFile(mainFile, mainContent, () => {
@@ -107,7 +107,7 @@ const getEntryFile = (dir) => {
 		});
 
 		const buildIndexHtml = indexHtml({ cpList });
-		fs.outputFileSync(`${process.cwd()}/source/index.html`, buildIndexHtml);
+		fs.outputFileSync(path.join(process.cwd(), 'source', 'index.html'), buildIndexHtml);
 	});
 };
 
