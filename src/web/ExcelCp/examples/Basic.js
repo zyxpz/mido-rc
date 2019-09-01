@@ -1,8 +1,7 @@
 import { React, ReactDom } from 'midoReact';
 import { ExcelCp } from '@/main';
 
-import Table from 'antd';
-import 'antd/es/table/style';
+import { Table } from 'antd';
 
 const {
 	Fragment

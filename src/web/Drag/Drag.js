@@ -45,7 +45,7 @@ export default class Drag extends React.Component {
   	this.dragEnterData = {};
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
   	const {
   		defaultValue = [],
   	} = this.props;

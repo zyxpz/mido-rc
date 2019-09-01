@@ -2,10 +2,7 @@ import React, { PureComponent } from 'react';
 import PropsTypes from 'prop-types';
 
 
-import Button from 'antd';
-import Icon from 'antd';
-import 'antd/es/button/style';
-import 'antd/es/icon/style';
+import { Button, Icon } from 'antd';
 import XLSX from 'xlsx';
 
 export default class ExcelExp extends PureComponent {

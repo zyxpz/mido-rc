@@ -47,50 +47,48 @@ const defaultValues = [
 	},
 ];
 
+const option = {
+	dragWarp: {
+		dragData: [
+			{
+				text: 1,
+				id: '1'
+			},
+			{
+				text: 2,
+				id: '2'
+			},
+			{
+				text: 3,
+				id: '3'
+			},
+			{
+				text: 4,
+				id: '4'
+			},
+		],
+		classNames: 'dragWarp-li',
+		styles: { display: 'inline-block' },
+		render: data => (
+			<span
+				style={{ ...styles.li }}
+			>
+				{data.text}
+			</span>
+		),
+	},
+	dropWarp: {
+		classNames: 'dropWarp-li',
+		styles: { ...styles.li2 },
+		render: data => (
+			<span>
+				{data.text}
+			</span>
+		),
+	},
+};
+
 class App extends React.Component {
-	constructor(props) {
-		super(props);
-		this.option = {
-			dragWarp: {
-				dragData: [
-					{
-						text: 1,
-						id: '1'
-					},
-					{
-						text: 2,
-						id: '2'
-					},
-					{
-						text: 3,
-						id: '3'
-					},
-					{
-						text: 4,
-						id: '4'
-					},
-				],
-				classNames: 'dragWarp-li',
-				styles: { display: 'inline-block' },
-				render: data => (
-					<span
-						style={{ ...styles.li }}
-					>
-						{data.text}
-					</span>
-				),
-			},
-			dropWarp: {
-				classNames: 'dropWarp-li',
-				styles: { ...styles.li2 },
-				render: data => (
-					<span>
-						{data.text}
-					</span>
-				),
-			},
-		};
-	}
 
 	handleOnchange = (data) => {
 		console.table(data);
@@ -99,7 +97,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<Drag
-				Option={this.option}
+				Option={option}
 				dragClassName="drag-Warp"
 				dragStyle={{ ...styles.dragWarp }}
 				dropClassName="drop-Warp"
@@ -113,5 +111,5 @@ class App extends React.Component {
 
 ReactDom.render(
 	<App />,
-	document.querySelector('.app'),
+	document.getElementById('app')
 );

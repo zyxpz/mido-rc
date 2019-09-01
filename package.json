@@ -35,6 +35,7 @@
     "babel-jest": "^24.8.0",
     "babel-plugin-import": "^1.12.0",
     "chalk": "^2.4.2",
+    "classnames": "^2.2.6",
     "cross-env": "^5.2.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
@@ -73,7 +74,7 @@
     "react": ">=16.8.x"
   },
   "lint-staged": {
-    "{src,config}/**/*.{js,jsx,vue}": [
+    "config/*.js": [
       "esw --fix",
       "git add"
     ],

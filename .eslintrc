@@ -11,7 +11,8 @@
     "no-useless-constructor": 1,
     "react/prop-types": 1,
     "no-return-assign": "off",
-    "no-mixed-spaces-and-tabs": "off"
+    "no-mixed-spaces-and-tabs": "off",
+    "react/display-name": 0
   },
   "parserOptions": {
     "ecmaVersion": 7,
