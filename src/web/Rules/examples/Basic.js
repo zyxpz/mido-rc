@@ -1,7 +1,8 @@
 import { React, ReactDom } from 'midoReact';
 import { Rules } from '@/main';
 
-import { Button } from 'antd';
+import Button from 'antd';
+import 'antd/es/button/style';
 import { rules } from './constants';
 import './Basic.less';
 

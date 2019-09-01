@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Modal } from 'antd';
+import Modal from 'antd/es/modal';
+import 'antd/es/modal/style';
 
 import PropsTypes from 'prop-types';
 

@@ -9,7 +9,9 @@
     "no-unused-vars": 1,
     "require-yield": 0,
     "no-useless-constructor": 1,
-    "react/prop-types": 1
+    "react/prop-types": 1,
+    "no-return-assign": "off",
+    "no-mixed-spaces-and-tabs": "off"
   },
   "parserOptions": {
     "ecmaVersion": 7,

@@ -1,3 +1,15 @@
+.mido-rules-conditions {
+  cursor: pointer;
+}
+.mido-rules-conditions span {
+  cursor: not-allowed;
+}
+.mido-rules-warehouse {
+  width: 300px;
+  height: 100px;
+  border: solid 1px black;
+}
+
 /* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
 /* stylelint-disable no-duplicate-selectors */
 /* stylelint-disable */
@@ -3551,18 +3563,6 @@ a.ant-btn-lg {
 }
 a.ant-btn-sm {
   line-height: 22px;
-}
-
-.mido-rules-conditions {
-  cursor: pointer;
-}
-.mido-rules-conditions span {
-  cursor: not-allowed;
-}
-.mido-rules-warehouse {
-  width: 300px;
-  height: 100px;
-  border: solid 1px black;
 }
 
 .rule-wrap-conditions {

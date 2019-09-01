@@ -2,7 +2,10 @@ import React, { PureComponent } from 'react';
 import PropsTypes from 'prop-types';
 
 
-import { Button, Icon } from 'antd';
+import Button from 'antd';
+import Icon from 'antd';
+import 'antd/es/button/style';
+import 'antd/es/icon/style';
 import XLSX from 'xlsx';
 
 export default class ExcelExp extends PureComponent {
@@ -18,7 +21,7 @@ export default class ExcelExp extends PureComponent {
 			saveName
 		});
 	}
-  
+
 	// 字符串转ArrayBuffer
 	s2ab(s) {
 		const buf = new ArrayBuffer(s.length);
@@ -33,14 +36,14 @@ export default class ExcelExp extends PureComponent {
 			data,
 			saveName
 		} = props;
-    
+
 		const sheet = XLSX.utils.aoa_to_sheet(data);
-    
+
 		let workbook = {
 			SheetNames: [saveName],
 			Sheets: {}
 		};
-    
+
 		workbook.Sheets[saveName] = sheet;
 		// 生成excel的配置项
 		let wopts = {
