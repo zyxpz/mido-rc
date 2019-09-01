@@ -49,6 +49,7 @@
     "lint-staged": "^9.2.0",
     "mido-construct": "^1.2.3",
     "pre-commit": "^1.2.2",
+    "react-dom": "^16.9.0",
     "rollup": "^1.17.0",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-clear": "^2.0.7",

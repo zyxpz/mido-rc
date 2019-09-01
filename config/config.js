@@ -130,6 +130,15 @@ export default {
 					libraryName: "@/main",
 					libraryDirectory: `${process.cwd()}/src/web`
 				}
+			],
+			[
+				'import',
+				{
+					libraryName: 'antd',
+					libraryDirectory: 'es',
+					style: true
+				},
+				'antd'
 			]
 		]
 	}
